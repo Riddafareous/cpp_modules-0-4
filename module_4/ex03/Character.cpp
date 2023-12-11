@@ -30,10 +30,11 @@ Character::Character(std::string name){
 
 Character::Character(const Character& character){
 	*this = character;
-	std::cout << "Character destrcutor called" << std::endl;
+	std::cout << "Character copy constructor called" << std::endl;
 }
 
 Character& Character::operator=(const Character& other){
+	std::cout << "ASsignment constructor called" << std::endl;
 	for(int i = 0; i < 4; i++) {
 		this->_materia[i] = other._materia[i]->clone();
 	}
@@ -55,7 +56,8 @@ const std::string& Character::getName() const{
 void	Character::equip(AMateria* m){
 	for(int i = 0; i < 4; i++){
 		if (this->_materia[i] == NULL)
-			this->_materia[i] = m;
+			std::cout << "Equipping materia" << std::endl;
+			this->_materia[i] = m->clone();
 	}
 }
 
@@ -63,7 +65,7 @@ void	Character::unequip(int idx){
 	if (idx > 3 || idx < 0)
 		return ;
 	if (this->_materia[idx] != NULL)
-		this->_materia[idx] = NULL;
+		delete this->_materia[idx];// = NULL;
 }
 
 void	Character::use(int idx, ICharacter& target){

@@ -19,7 +19,7 @@ Ice::Ice(){
 }
 
 Ice::Ice(const Ice& ice){
-	*this = ice;
+	_type = ice.getType();
 	std::cout << "Ice copy constructor called" << std::endl;
 }
 

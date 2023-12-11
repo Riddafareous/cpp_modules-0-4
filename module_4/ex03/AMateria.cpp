@@ -23,7 +23,7 @@ AMateria::AMateria(std::string const & type){
 }
 
 AMateria::AMateria(const AMateria& materia){
-	*this = materia;
+	_type = materia.getType();
 	std::cout << "Materia Copy constructor called" << std::endl;
 }
 
@@ -32,7 +32,11 @@ AMateria& AMateria::operator=(const AMateria& other){
 	return (*this);
 }
 
-AMateria::~AMateria(){}
+AMateria::~AMateria(){
+	std::cout << this << std::endl;
+	std::cout << _type << std::endl;
+	std::cout << "AMateria destructor called" << std::endl;
+}
 
 std::string const & AMateria::getType() const{
 	return (this->_type);

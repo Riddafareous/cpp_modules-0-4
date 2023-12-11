@@ -19,7 +19,7 @@ Cure::Cure(){
 }
 
 Cure::Cure(const Cure& cure){
-	*this = cure;
+	_type = cure.getType();
 	std::cout << "Copy Cure onstructor called" << std::endl;
 }
 

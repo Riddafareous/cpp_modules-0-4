@@ -35,6 +35,7 @@ MateriaSource::~MateriaSource(){
 
 	std::cout << "MateriaSource destructor called" << std::endl;
 	for(int i = 0; i < 4; i++){
+		std::cout << i << " = i" << std::endl;
 		if (this->_materia[i] != NULL)
 			delete this->_materia[i];
 	}
@@ -42,14 +43,17 @@ MateriaSource::~MateriaSource(){
 
 void	MateriaSource::learnMateria(AMateria *materia){
 	for(int i = 0; i < 4; i++){
-		if (this->_materia[i] == NULL)
+		if (this->_materia[i] == NULL) {
 			this->_materia[i] = materia;
+			break;
+		}
 	}
 }
 
 AMateria	*MateriaSource::createMateria(std::string const & type){
 	for(int i = 0; i < 4; i++){
 		if (this->_materia[i]->getType() == type)
+			std::cout << "materia type found " << type << std::endl;
 			return (this->_materia[i]->clone());
 	}
 	return (NULL);

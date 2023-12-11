@@ -15,6 +15,7 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "MateriaSource.hpp"
+#include <iostream>
 
 int main(void){
 	
@@ -24,14 +25,22 @@ int main(void){
 	ICharacter* me = new Character("me");
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
+	std::cout << "tmp: " << tmp << std::endl;
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
+	std::cout << "tmp: " << tmp << std::endl;
 	me->equip(tmp);
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+	std::cout << "test deleting bob" << std::endl;
 	delete bob;
+	std::cout << "test deleted bob" << std::endl;
+	std::cout << "test deleting me" << std::endl;
 	delete me;
+	std::cout << "test deleted me" << std::endl;
+	std::cout << "test deleting src" << std::endl;
 	delete src;
+	std::cout << "test deleted src" << std::endl;
 	return 0;
 }
